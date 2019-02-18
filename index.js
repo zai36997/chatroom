@@ -37,3 +37,4 @@ io.on('connection',function(socket){
         socket.broadcast.emit('typing', data) //ส่งหา client ทุกคนยกเว้นตัวเอง
     });
 });
+//html
