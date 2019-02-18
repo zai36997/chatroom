@@ -1,20 +1,17 @@
 var express = require('express');
 var socket = require('socket.io');
-//var MongoClient=require('mongodb').MongoClient;
-//var url ="mongodb://localhost:27017/chatRoom";
- //MongoClient.connect(url, { useNewUrlParser: true }, function(err, db){
-    //var dbo = db.db("chatRoom"); 
-    //console.log(" creacted... ");
-   // dbo.collection("dataChat", function(socket){
-     //if (err) throw err;
-    //console.log(" creacted... ");
-     //db.close();
-  //  });
-    //if(err){
-      //  throw err;
- //   }
-   // console.log('MongoDB connected...');
-// });
+var MongoClient=require('mongodb').MongoClient;
+var url ="mongodb://localhost:27017/chatRoom";
+ MongoClient.connect(url, { useNewUrlParser: true }, function(err, db){
+    var dbo = db.db("chatRoom"); 
+    dbo.collection("dataChat", function(err,res){
+
+        
+     if (err) throw err;
+     console.log(" creacted... ");
+     db.close();
+    });
+ });
 
 //app setup
 var app = express();
@@ -30,7 +27,6 @@ app.use(express.static('public'));
 var io = socket(server);
 
 io.on('connection',function(socket){
-    //var chat = MongoClient.collection('chat');
     console.log('made socket connection', socket.id);
 
 //Handle chat event

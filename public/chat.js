@@ -13,8 +13,8 @@ var message = document.getElementById('message');
 btn.addEventListener('click', function(){
 socket.emit('chat', {
     message: message.value,
-    handle: handle.value
-   
+    handle: handle.value 
+     
     });
 });
 
